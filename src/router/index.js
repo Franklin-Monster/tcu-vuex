@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '@/views/home/home'
-import Vpn from '@/views/vpn/vpn'
-import TeacherLogin from '@/views/login/teacherLogin'
-import StudentLogin from '@/views/login/studentLogin'
-import NextLogin from '@/views/login/nextLogin'
-import SystemLogin from '@/views/login/systemLogin'
-import UserInformation from '@/views/login/nextLoginChildViews/userInformation'
-import ConnectManage from '@/views/login/nextLoginChildViews/connectManage'
+
+const Home = () => import('@/views/home/home')
+const Vpn = () => import('@/views/vpn/vpn')
+const TeacherLogin = () => import('@/views/login/teacherLogin')
+const StudentLogin = () => import('@/views/login/studentLogin')
+const NextLogin = () => import('@/views/login/nextLogin')
+const SystemLogin = () => import('@/views/login/systemLogin')
+const UserInformation = () => import('@/views/login/nextLoginChildViews/userInformation')
+const ConnectManage = () => import('@/views/login/nextLoginChildViews/connectManage')
+const SelectUsers = () => import('@/views/termStart/selectUsers')
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -55,12 +58,17 @@ const routes = [
     path: '/login/next/connect-manage',
     name: 'connectManage',
     component: ConnectManage
+  },
+  {
+    path: 'login/AdminSelect',
+    name: 'AdminSelect',
+    component: SelectUsers
   }
 
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

@@ -89,11 +89,11 @@
               </div>
             </div>
           </div>
-          <div class="system-box">
+          <div class="system-box" @click="goAdmin">
             <div class="system-card">
-              <div class="box-logo">研</div>
+              <div class="box-logo">教</div>
               <div class="box-content">
-                <div class="box-title">研究生系统学生端</div>
+                <div class="box-title">教务系统管理</div>
                 <div class="box-web">yjsx.tcu.edu.cn</div>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default {
     return {
       flag: false,
       command: "http",
-      input: ""
+      input: "",
     };
   },
   methods: {
@@ -139,26 +139,29 @@ export default {
     userClick() {
       this.$router.push({ url: "login/next/user", name: "userInformation" });
     },
-    noticeErrorClick(){
-      this.makeNone("notice")
+    goAdmin() {
+      this.$router.push({ url: "login/AdminSelect", name: "AdminSelect" });
+    },
+    noticeErrorClick() {
+      this.makeNone("notice");
     },
     connectClick() {
       this.$router.push({
         url: "login/next/connect-manage",
-        name: "connectManage"
+        name: "connectManage",
       });
     },
     cancelClick() {
       this.$confirm("您将注销此账号, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
+        type: "warning",
       })
         .then(() => {
           this.$message({
             type: "success",
             duration: 1000,
-            message: "注销成功!"
+            message: "注销成功!",
           });
           setTimeout(() => {
             this.$router.push({ url: "/login/teacher", name: "teacherlogin" });
@@ -168,11 +171,11 @@ export default {
           this.$message({
             type: "info",
             duration: 1000,
-            message: "已取消注销"
+            message: "已取消注销",
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -271,7 +274,7 @@ export default {
         vertical-align: middle;
         margin-right: 14px;
         margin-left: 18px;
-      } 
+      }
       .combo-box {
         z-index: 999 !important;
         position: absolute;
